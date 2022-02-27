@@ -1,8 +1,8 @@
 
-export const pagination = (model) => {
+export const pagination = (model,selected) => {
     return async (req,res,next ) => {
         try{
-            let query = model.find().sort({ createdAt: -1 });
+            let query = model.find().select(selected).sort({ createdAt: -1 });
             const page = parseInt(req.query.page) || 1;
             const pageSize = parseInt(req.query.limit) || 10;
             const skip = (page - 1) * pageSize;
