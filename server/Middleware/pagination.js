@@ -1,7 +1,6 @@
-
-export const pagination = (model,selected) => {
-    return async (req,res,next ) => {
-        try{
+export const pagination = (model, selected) => {
+    return async (req, res, next) => {
+        try {
             let query = model.find().select(selected).sort({ createdAt: -1 });
             const page = parseInt(req.query.page) || 1;
             const pageSize = parseInt(req.query.limit) || 10;
@@ -10,10 +9,10 @@ export const pagination = (model,selected) => {
             const pages = Math.ceil(total / pageSize);
 
             query = query.skip(skip).limit(pageSize);
-            if(page>pages){
+            if (page > pages) {
                 res.status(404).json({
-                    status: "error",
-                    message: "Page not found"
+                    status: 'error',
+                    message: 'Page not found',
                 });
             }
             const result = await query;
@@ -22,12 +21,11 @@ export const pagination = (model,selected) => {
                 pages,
                 page,
                 pageSize,
-                result
+                result,
             };
             next();
-        }catch (e) {
+        } catch (e) {
             console.log(e);
         }
-
-    }
-}
+    };
+};
