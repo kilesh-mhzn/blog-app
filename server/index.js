@@ -3,8 +3,9 @@ import dotenv from "dotenv"
 import bodyParser from "body-parser";
 
 import connectDB from "./db/config.js";
-import userRoutes from "./Routes/users.js"
-import postRoutes from './Routes/posts.js'
+import userRoutes from "./Routes/Dashboard/users.js"
+import dashboardPostRoutes from './Routes/Dashboard/posts.js'
+import publicPostRoutes from './Routes/Public/posts.js'
 import authRoutes from './Routes/auth.js'
 import cors from "cors"
 dotenv.config()
@@ -25,7 +26,8 @@ app.get("/", (req, res)=>{
 
 app.use('/auth', authRoutes)
 app.use('/user', userRoutes)
-app.use("/post",postRoutes)
+app.use("/dashboard/post",dashboardPostRoutes)
+app.use("/post",publicPostRoutes )
 
 
 
