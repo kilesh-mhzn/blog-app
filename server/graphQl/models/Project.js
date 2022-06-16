@@ -15,6 +15,10 @@ const ProjectSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Client',
         },
+        tasks: {
+            type: Array,
+            default: [],
+        },
     },
     {
         timestamps: true,
