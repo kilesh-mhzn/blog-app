@@ -21,6 +21,15 @@
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "type": "npm",
+            "script": "build",
+            "path": "client",
+            "group": "build",
+            "problemMatcher": [],
+            "label": "npm: build - client",
+            "detail": "react-scripts build"
         }
     ]
 }
